@@ -4,10 +4,10 @@ import java.io.*;
 
 public class CO2DataSearch{
     public static void main(String[] args){
-        searchCountry("Canada");
+        searchYearCo2PerCap("Canada");
     }
 
-    public static int[] searchCountry(String country){
+    public static int[] searchYearCo2PerCap(String country){
         // Set path
         String path = "C:\\Users\\vetra\\github-classroom\\4-0-data-visualization-rachael-solo\\src\\basic\\CO2Data.csv";
         String searchWord = country;
