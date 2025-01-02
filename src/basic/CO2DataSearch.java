@@ -1,9 +1,8 @@
 package basic;
 
 import java.io.*;
-import java.util.Scanner;
 
-public class CO2DataSearch {
+public class CO2DataSearch{
     public static void main(String[] args){
         searchCountry("Canada");
     }
@@ -43,6 +42,4 @@ public class CO2DataSearch {
 
         return result;
     }
-
-    
 }
