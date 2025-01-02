@@ -5,7 +5,7 @@ public class TestCountryYearCO2Collection {
            
             CountryYearCO2Collection collection = new CountryYearCO2Collection();
     
-            collection.countryDataSearch("Asia");
+            collection.countryDataSearch("Africa");
     
             for (CountryYearCO2 data : collection.getCountryData()) {
                 System.out.println(data);
