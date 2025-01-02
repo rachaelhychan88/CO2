@@ -39,4 +39,9 @@ public class CountryYearCO2 {
     public void setCo2PerCapita(double co2PerCapita){
         this.co2PerCapita = co2PerCapita;
     }
+
+    @Override
+    public String toString() {
+        return "Country: " + country + ", Year: " + year + ", CO2 per capita: " + co2PerCapita;
+    }
 }

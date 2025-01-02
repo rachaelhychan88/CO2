@@ -20,10 +20,11 @@ public class CO2DataSearch{
             int firstOccurrenceLine = -1; // Tracks the line number of the first occurrence
 
             while ((line = br.readLine()) != null) {
+                String[] lineData = line.split(",", -1);
                 lineNumber++; // Increment line number
 
                 // Check if the line contains the search word
-                if (line.contains(searchWord)) {
+                if (lineData[0].equals(searchWord)) {
                     linesWithWord++;
 
                     // Set the first occurrence line if it hasn't been set yet
