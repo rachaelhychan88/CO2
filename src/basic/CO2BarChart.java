@@ -3,6 +3,7 @@ package basic;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
@@ -24,18 +25,24 @@ public class CO2BarChart extends Application{
     private CategoryAxis xAxis;
     private NumberAxis yAxis;
 
-        @Override
+    @Override
     public void start(Stage stage) {
         createContent();
 
         // Add a ComboBox for year selection
         ComboBox<Integer> yearSelector = new ComboBox<>();
-        yearSelector.setItems(FXCollections.observableArrayList(2019, 2020, 2021));
+        ObservableList<Integer> years = FXCollections.observableArrayList();
+        for (int year = 1985; year <= 2021; year++) {
+            years.add(year);
+        }
+
+        yearSelector.setItems(years);
         yearSelector.setPromptText("Select Year");
         yearSelector.setOnAction(e -> updateChart(yearSelector.getValue()));
 
-        VBox layout = new VBox(10, yearSelector);
+        VBox layout = new VBox(10, yearSelector, co2Chart);
         layout.setPrefSize(800, 600);
+        layout.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(layout);
         stage.setScene(scene);
@@ -73,5 +80,9 @@ public class CO2BarChart extends Application{
         }
 
         co2Chart.getData().add(series);
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }
