@@ -18,7 +18,7 @@ import java.util.Scanner;
 import javafx.event.EventHandler; 
 
 
-public class CO2LineChart extends Application{
+public class CO2LineChartTesting extends Application{
     @Override
     public void start(Stage primaryStage) throws FileNotFoundException{
         VBox layout = createChartWithLayout();

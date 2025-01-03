@@ -17,16 +17,17 @@ public class Main extends Application {
         TabPane tabPane = new TabPane();
 
         // Create CO2 Bar Chart Tab
-        CO2BarChart chart = new CO2BarChart();
-        VBox chartLayout = chart.createChartWithLayout();
+        CO2BarChart barChart = new CO2BarChart();
+        VBox barChartLayout = barChart.createChartWithLayout();
         Tab barChartTab = new Tab("CO2 Bar Chart");
-        barChartTab.setContent(chartLayout); // Set the content of the BarChart Tab
+        barChartTab.setClosable(false);
+        barChartTab.setContent(barChartLayout); // Set the content of the BarChart Tab
 
         // Create CO2 Line Chart Tab
         Tab lineChartTab = new Tab("CO2 Line Chart");
         lineChartTab.setClosable(false);
-        VBox lineChartLayout = new VBox();
         CO2LineChart lineChart = new CO2LineChart(); 
+        VBox lineChartLayout = lineChart.createChartWithLayout();
         lineChartTab.setContent(lineChartLayout); 
 
         // Add tabs to the TabPane
