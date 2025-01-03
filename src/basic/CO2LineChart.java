@@ -194,8 +194,10 @@ public class CO2LineChart extends Application{
         return layout;
     }
 
+    /**
+     * Java main for when running without JavaFX launcher
+     */
     public static void main(String[] args) {
-        // Launch the JavaFX application
         launch(args);
     }
 }

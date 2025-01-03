@@ -88,7 +88,9 @@ public class CO2BarChart extends Application {
 
         co2Chart.getData().add(series);
     }
-
+    /**
+     * Java main for when running without JavaFX launcher
+     */
     public static void main(String[] args) {
         launch(args);
     }

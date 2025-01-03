@@ -37,7 +37,10 @@ public class Main extends Application {
         stage.setTitle("CO2 Emissions Charts");
         stage.show();
     }
-
+    
+    /**
+     * Java main for when running without JavaFX launcher
+     */
     public static void main(String[] args) {
         launch(args);
     }

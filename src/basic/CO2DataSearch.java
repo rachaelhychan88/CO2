@@ -2,13 +2,21 @@ package basic;
 
 import java.io.*;
 
-public class CO2DataSearch{
-    public static void main(String[] args){
-        searchYearCo2PerCap("Canada");
-    }
+/**
+ * The CO2Data Search class contains the methods used to search the CO2Data.csv file
+ * for relevant information. 
+ */
+public class CO2DataSearch {
 
+    /**
+     * This method searches the CO2Data.csv file for the first relevant line that contain the data of a specific country 
+     * and how many lines the country appears in
+     * 
+     * @param country the country to search the data for
+     * @return an integer array where the first element is the first occurrence of the country and the second 
+     * element is the number of lines the country appears in
+     */
     public static int[] searchYearCo2PerCap(String country){
-        // Set path
         String path = "C:\\Users\\vetra\\github-classroom\\4-0-data-visualization-rachael-solo\\src\\basic\\CO2Data.csv";
         String searchWord = country;
         int[] result = new int[2];
@@ -44,6 +52,13 @@ public class CO2DataSearch{
         return result;
     }
 
+    /**
+     * This method searches the CO2Data.csv file for the CO2 Emissions per Capita of a specific country at a specific year
+     * 
+     * @param country the country to search the data for
+     * @param year the year to search the data for
+     * @return a CountryYearCO2 object with the country, year, and the CO2 Emissions per Capita of that country for that year
+     */
     public static CountryYearCO2 findCO2fromYear(String country, int year){
         String path = "C:\\Users\\vetra\\github-classroom\\4-0-data-visualization-rachael-solo\\src\\basic\\CO2Data.csv";
         String searchWord = country;

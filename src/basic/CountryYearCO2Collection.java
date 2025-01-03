@@ -6,11 +6,19 @@ import java.util.ArrayList;
 public class CountryYearCO2Collection {
     private ArrayList<CountryYearCO2> countryData;
 
+    /**
+     * Constructor - creates a new CountryYearCO2Collection instance
+     */
     public CountryYearCO2Collection() {
         this.countryData = new ArrayList<>();
     }
 
     // make method for the searching for the data points here to add to the collection
+    /**
+     * This method makes the CountryYearCO2Collection contain CO2YearCO2 Objects for each 
+     * relevant line of the CO2Data.csv file
+     * @param country the country of interest
+     */
     public void countryDataSearch(String country){
         int[] countryStartOccurrence = CO2DataSearch.searchYearCo2PerCap(country);
         String path = "C:\\Users\\vetra\\github-classroom\\4-0-data-visualization-rachael-solo\\src\\basic\\CO2Data.csv";
