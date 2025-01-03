@@ -13,7 +13,12 @@ import javafx.stage.Stage;
 import java.io.*;
 import javafx.event.EventHandler; 
 
-
+/**
+ * The CO2LineChart Class creates a line chart comparing the Per Capita CO2 Emissions Across Continents 
+ * from 1965 to 2023, and contains checkboxes that allow the data for different continents to be viewed.
+ * 
+ * @author: R. Chan 
+ */
 public class CO2LineChart extends Application{
 
     /**
@@ -24,18 +29,19 @@ public class CO2LineChart extends Application{
      */
     @Override
     public void start(Stage primaryStage) throws FileNotFoundException{
-        VBox layout = createChartWithLayout();
-        
-        // Create a scene to hold the chart and checkboxes
+
+        VBox layout = createChartWithLayout(); 
+
+        // Creates a scene to hold the line chart and checkboxes
         Scene scene = new Scene(layout, 600, 600);
 
-        //Attach the Scene to the Stage (the top-level window).
+        //Attaches the Scene to the Stage
         primaryStage.setScene(scene);
 
-        // Set the title of the Stage (window).
+        // Sets the title of the Stage
         primaryStage.setTitle("Per Capita CO2 Emissions Across Continents (1965–2023)");
 
-        // Show the Stage (make the window visible).
+        // Makes the Stage (window) visible
         primaryStage.show();
     }
 
@@ -46,22 +52,8 @@ public class CO2LineChart extends Application{
      * @return A VBox containing the line chart and associated checkboxes
      */
     public VBox createChartWithLayout(){
-        // create series for each sorting algorithm type
-        XYChart.Series<Number, Number> northAmerica = new XYChart.Series<>();
-        XYChart.Series<Number, Number> southAmerica = new XYChart.Series<>();
-        XYChart.Series<Number, Number> australia = new XYChart.Series<>();
-        XYChart.Series<Number, Number> europe = new XYChart.Series<>();
-        XYChart.Series<Number, Number> africa = new XYChart.Series<>();
-        XYChart.Series<Number, Number> asia = new XYChart.Series<>();
 
-        // Set the name of the data series, which will appear in the chart legend.
-        northAmerica.setName("North America");
-        southAmerica.setName("South America");
-        australia.setName("Australia");
-        europe.setName("Europe");
-        africa.setName("Africa");
-        asia.setName("Asia");
-
+        // Creates instances of the CountryYearCO2Collection class for each of the continents
         CountryYearCO2Collection northAmericaCollection = new CountryYearCO2Collection();
         CountryYearCO2Collection southAmericaCollection = new CountryYearCO2Collection();
         CountryYearCO2Collection australiaCollection = new CountryYearCO2Collection();
@@ -69,6 +61,7 @@ public class CO2LineChart extends Application{
         CountryYearCO2Collection africaCollection = new CountryYearCO2Collection();
         CountryYearCO2Collection asiaCollection = new CountryYearCO2Collection();
 
+        // Searches the CO2Data.csv file for relevant information to add to the instance for each continent
         northAmericaCollection.countryDataSearch("North America");
         southAmericaCollection.countryDataSearch("South America");
         australiaCollection.countryDataSearch("Australia");
@@ -76,6 +69,23 @@ public class CO2LineChart extends Application{
         africaCollection.countryDataSearch("Africa");
         asiaCollection.countryDataSearch("Asia");
 
+        // Creates a series for each continent
+        XYChart.Series<Number, Number> northAmerica = new XYChart.Series<>();
+        XYChart.Series<Number, Number> southAmerica = new XYChart.Series<>();
+        XYChart.Series<Number, Number> australia = new XYChart.Series<>();
+        XYChart.Series<Number, Number> europe = new XYChart.Series<>();
+        XYChart.Series<Number, Number> africa = new XYChart.Series<>();
+        XYChart.Series<Number, Number> asia = new XYChart.Series<>();
+
+        // Sets the name of the data series that will appear in the chart legend.
+        northAmerica.setName("North America");
+        southAmerica.setName("South America");
+        australia.setName("Australia");
+        europe.setName("Europe");
+        africa.setName("Africa");
+        asia.setName("Asia");
+
+        // For each of the continent's CountryYearCO2Collection, loop through them and create data points
         for(int index = 0; index < northAmericaCollection.getCountryData().size(); index ++){
             CountryYearCO2 data = northAmericaCollection.getCountryData().get(index);
             northAmerica.getData().add(new XYChart.Data<>(data.getYear(), data.getCo2PerCapita()));
@@ -102,19 +112,19 @@ public class CO2LineChart extends Application{
         }
 
       
-        // Create a NumberAxis for the x-axis (horizontal axis).
+        // Creates a NumberAxis for the x-axis (year)
         NumberAxis xAxis = new NumberAxis("Year", 1965, 2023, 5);
 
-        // Create a NumberAxis for the y-axis (vertical axis).
+        // Creates a NumberAxis for the y-axis (CO2 Emissions)
         NumberAxis yAxis = new NumberAxis("CO2 Emissions (in tonnes per person)", 0,3, 0.1);
 
-        // Create a LineChart using the x-axis and y-axis.
+        // Creates a LineChart using the x-axis and y-axis
         LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
 
-        // Set the title of the chart.
+        // Sets the title of the chart
         lineChart.setTitle("Per Capita CO2 Emissions Across Continents (1965–2023)");
 
-        // create checkboxes for the sorting algorithms
+        // Creates checkboxes for each of the continents
         CheckBox northAmericaCheckBox = new CheckBox("North America"); 
         CheckBox southAmericaCheckBox = new CheckBox("South America"); 
         CheckBox australiaCheckBox = new CheckBox("Australia"); 
@@ -126,6 +136,7 @@ public class CO2LineChart extends Application{
   
             public void handle(ActionEvent e) 
             { 
+                // Add or remove North America data series based on checkbox state
                 if (northAmericaCheckBox.isSelected()) 
                     lineChart.getData().add(northAmerica);
                 else
@@ -138,6 +149,7 @@ public class CO2LineChart extends Application{
   
             public void handle(ActionEvent e) 
             { 
+                // Add or remove South America data series based on checkbox state
                 if (southAmericaCheckBox.isSelected()) 
                     lineChart.getData().add(southAmerica);
                 else
@@ -150,6 +162,7 @@ public class CO2LineChart extends Application{
   
             public void handle(ActionEvent e) 
             { 
+                // Add or remove Australia data series based on checkbox state
                 if (australiaCheckBox.isSelected()) 
                     lineChart.getData().add(australia);
                 else
@@ -162,6 +175,7 @@ public class CO2LineChart extends Application{
   
             public void handle(ActionEvent e) 
             { 
+                // Add or remove Africa data series based on checkbox state
                 if (africaCheckBox.isSelected()) 
                     lineChart.getData().add(africa);
                 else
@@ -174,6 +188,7 @@ public class CO2LineChart extends Application{
   
             public void handle(ActionEvent e) 
             { 
+                // Add or remove Asia data series based on checkbox state
                 if (asiaCheckBox.isSelected()) 
                     lineChart.getData().add(asia);
                 else
@@ -186,6 +201,7 @@ public class CO2LineChart extends Application{
   
             public void handle(ActionEvent e) 
             { 
+                // Add or remove Europe data series based on checkbox state
                 if (europeCheckBox.isSelected()) 
                     lineChart.getData().add(europe);
                 else
@@ -194,6 +210,7 @@ public class CO2LineChart extends Application{
 
         };
         
+        // Attaches event handlers to their respective checkboxes
         northAmericaCheckBox.setOnAction(northAmericaEvent);
         southAmericaCheckBox.setOnAction(southAmericaEvent);
         asiaCheckBox.setOnAction(asiaEvent);

@@ -5,6 +5,8 @@ import java.io.*;
 /**
  * The CO2Data Search class contains the methods used to search the CO2Data.csv file
  * for relevant information. 
+ * 
+ * @author: R. Chan
  */
 public class CO2DataSearch {
 
@@ -17,39 +19,42 @@ public class CO2DataSearch {
      * element is the number of lines the country appears in
      */
     public static int[] searchYearCo2PerCap(String country){
+        
+        // Declare and initialize variables
         String path = "C:\\Users\\vetra\\github-classroom\\4-0-data-visualization-rachael-solo\\src\\basic\\CO2Data.csv";
         String searchWord = country;
-        int[] result = new int[2];
+        int[] searchResult = new int[2];
+        String line;
+        int lineNumber = 0; // Tracks the current line number
+        int linesWithWord = 0; // Tracks the number of lines where the word appears
+        int firstOccurrenceLine = -1; // Tracks the line number of the first occurrence of the word
 
-        try(BufferedReader br = new BufferedReader(new FileReader(path))){
-            String line;
-            int lineNumber = 0; // Tracks the current line number
-            int linesWithWord = 0; // Tracks the number of lines where the word appears
-            int firstOccurrenceLine = -1; // Tracks the line number of the first occurrence
 
-            while ((line = br.readLine()) != null) {
-                String[] lineData = line.split(",", -1);
-                lineNumber++; // Increment line number
+        try(BufferedReader br = new BufferedReader(new FileReader(path))){ // Set up BufferedReader to read the CO2Data.csv file
 
-                // Check if the line contains the search word
-                if (lineData[0].equals(searchWord)) {
+            while ((line = br.readLine()) != null){ 
+                String[] lineData = line.split(",", -1); // Splits the line into different elements by the commas, ensuring to count empty spaces as elements
+                lineNumber++;
+
+                if (lineData[0].equals(searchWord)){ // Checks if the first element of the line (the country), matches the country of interest
                     linesWithWord++;
 
-                    // Set the first occurrence line if it hasn't been set yet
-                    if (firstOccurrenceLine == -1) {
+                    // Set the first occurrence line to the current line if it hasn't been set yet
+                    if (firstOccurrenceLine == -1){
                         firstOccurrenceLine = lineNumber;
                     }
                 }
             }
 
-            result[0] = firstOccurrenceLine;
-            result[1] = linesWithWord;
+            // Sets the resulting array to the gathered data
+            searchResult[0] = firstOccurrenceLine;
+            searchResult[1] = linesWithWord;
             
-        } catch (FileNotFoundException e) {
-        } catch(IOException e) {
+        } catch (FileNotFoundException e){
+        } catch(IOException e){
         }
 
-        return result;
+        return searchResult;
     }
 
     /**
@@ -60,26 +65,26 @@ public class CO2DataSearch {
      * @return a CountryYearCO2 object with the country, year, and the CO2 Emissions per Capita of that country for that year
      */
     public static CountryYearCO2 findCO2fromYear(String country, int year){
+
+        // Declare and initialize variables
         String path = "C:\\Users\\vetra\\github-classroom\\4-0-data-visualization-rachael-solo\\src\\basic\\CO2Data.csv";
         String searchWord = country;
         String searchYear = Integer.toString(year);
+        String line;
 
-        try(BufferedReader br = new BufferedReader(new FileReader(path))){
-            String line;
+        try(BufferedReader br = new BufferedReader(new FileReader(path))){ // Set up BufferedReader to read the CO2Data.csv file
 
-            while ((line = br.readLine()) != null) {
-                String[] lineData = line.split(",", -1);
+            while ((line = br.readLine()) != null){
+                String[] lineData = line.split(",", -1); // Splits the line into different elements by the commas, ensuring to count empty spaces as elements
 
-                // Check if the line contains the search word
-                if (lineData[0].equals(searchWord) && lineData[1].equals(searchYear)) {
-                    CountryYearCO2 yearResult = new CountryYearCO2(country, year, Double.parseDouble(lineData[15]));
-
+                if (lineData[0].equals(searchWord) && lineData[1].equals(searchYear)){ // Checks if the first element of the line (the country), matches the country of interest as well as if the second element of the line (the year), matches the year of interest
+                    CountryYearCO2 yearResult = new CountryYearCO2(country, year, Double.parseDouble(lineData[15])); // lineData[15] as the 16th column of the csv file is the CO2 emissions per capita data
                     return yearResult;
                 }
             }
             
-        } catch (FileNotFoundException e) {
-        } catch(IOException e) {
+        } catch (FileNotFoundException e){
+        } catch(IOException e){
         }
 
         return null;

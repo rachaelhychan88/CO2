@@ -1,6 +1,14 @@
 package basic;
 
+/**
+ * This class is designed to store and provide access to details about CO2 emissions 
+ * per capita for a specific country at a specific year.
+ * 
+ * @author: R. Chan
+ */
 public class CountryYearCO2 {
+
+    // Declare variables
     private String country;
     private int year;
     private double co2PerCapita;
