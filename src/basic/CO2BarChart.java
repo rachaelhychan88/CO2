@@ -20,6 +20,10 @@ public class CO2BarChart extends Application {
     private CategoryAxis xAxis;
     private NumberAxis yAxis;
 
+    /**
+     * Starts the JavaFX application and sets up the primary stage for the bar chart and ComboBox
+     * @param stage The primary stage for this JavaFX bar chart
+     */
     @Override
     public void start(Stage stage) {
         // Create the chart and layout
@@ -31,7 +35,12 @@ public class CO2BarChart extends Application {
         stage.show();
     }
 
-    // This method returns the chart layout, which can be used in other classes
+    /**
+     * Creates a VBox layout containing a bar chart (CO2 Emissions Per Capita for the Top 10 Most Populated Countries) 
+     * and ComboBox for year selection
+     * 
+     * @return A VBox containing the bar chart and the ComboBox for year selection
+     */
     public VBox createChartWithLayout() {
         // Initialize chart and axis
         createContent();
@@ -55,7 +64,9 @@ public class CO2BarChart extends Application {
         return layout;
     }
 
-    // This method creates and configures the chart
+    /**
+     * This method creates and configures the chart
+     */
     public void createContent() {
         String[] countries = {"India", "China", "United States", "Indonesia", "Pakistan", "Nigeria", "Brazil", "Bangladesh", "Russia", "Mexico"};
         xAxis = new CategoryAxis();
@@ -64,10 +75,13 @@ public class CO2BarChart extends Application {
         yAxis = new NumberAxis("CO2 Emissions (in tonnes per person)", 0, 3, 0.1);
 
         co2Chart = new BarChart<>(xAxis, yAxis);
-        co2Chart.setTitle("CO2 Emissions by Country");
+        co2Chart.setTitle("CO2 Emissions Per Capita for the Top 10 Most Populated Countries");
     }
 
-    // This method is used to update the chart with data for a selected year
+    /**
+     * This method is used to update the chart with data for a selected year
+     * @param year the selected year
+     */
     public void updateChart(int year) {
         String[] countries = {"India", "China", "United States", "Indonesia", "Pakistan", "Nigeria", "Brazil", "Bangladesh", "Russia", "Mexico"};
         co2Chart.getData().clear();
@@ -88,6 +102,7 @@ public class CO2BarChart extends Application {
 
         co2Chart.getData().add(series);
     }
+
     /**
      * Java main for when running without JavaFX launcher
      */

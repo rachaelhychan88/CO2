@@ -9,6 +9,11 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     
+    /**
+     * Sets up the primary stage with a TabPane containing tabs for the bar chart and a line chart
+     *
+     * @param stage the primary stage for this JavaFX application
+     */
     @Override
     public void start(Stage stage) {
         // Create a TabPane to hold the tabs
@@ -37,7 +42,7 @@ public class Main extends Application {
         stage.setTitle("CO2 Emissions Charts");
         stage.show();
     }
-    
+
     /**
      * Java main for when running without JavaFX launcher
      */

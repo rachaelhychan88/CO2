@@ -13,9 +13,8 @@ public class CountryYearCO2Collection {
         this.countryData = new ArrayList<>();
     }
 
-    // make method for the searching for the data points here to add to the collection
     /**
-     * This method makes the CountryYearCO2Collection contain CO2YearCO2 Objects for each 
+     * This method makes the CountryYearCO2Collection contain CountryYearCO2 Objects for each 
      * relevant line of the CO2Data.csv file
      * @param country the country of interest
      */

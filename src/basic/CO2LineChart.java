@@ -15,6 +15,13 @@ import javafx.event.EventHandler;
 
 
 public class CO2LineChart extends Application{
+
+    /**
+     * Starts the JavaFX application and sets up the primary stage for the line chart and checkboxes
+     * 
+     * @param primaryStage The primary stage for this JavaFX line chart
+     * @throws FileNotFoundException If required data files are not found during the application setup
+     */
     @Override
     public void start(Stage primaryStage) throws FileNotFoundException{
         VBox layout = createChartWithLayout();
@@ -32,6 +39,12 @@ public class CO2LineChart extends Application{
         primaryStage.show();
     }
 
+    /**
+     * Creates a VBox layout containing a line chart (Per Capita CO2 Emissions Across Continents (1965–2023)) 
+     * and checkboxes for selecting the continents' data series.
+     * 
+     * @return A VBox containing the line chart and associated checkboxes
+     */
     public VBox createChartWithLayout(){
         // create series for each sorting algorithm type
         XYChart.Series<Number, Number> northAmerica = new XYChart.Series<>();
