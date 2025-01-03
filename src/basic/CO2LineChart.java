@@ -7,14 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.*;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
 import javafx.event.EventHandler; 
 
 
@@ -30,7 +26,7 @@ public class CO2LineChart extends Application{
         primaryStage.setScene(scene);
 
         // Set the title of the Stage (window).
-        primaryStage.setTitle("Per Capita CO2 Emissions from 1965 to 2023 for the Continents");
+        primaryStage.setTitle("Per Capita CO2 Emissions Across Continents (1965–2023)");
 
         // Show the Stage (make the window visible).
         primaryStage.show();
@@ -103,7 +99,7 @@ public class CO2LineChart extends Application{
         LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
 
         // Set the title of the chart.
-        lineChart.setTitle("Per Capita CO2 Emissions from 1965 to 2023 for the Continents");
+        lineChart.setTitle("Per Capita CO2 Emissions Across Continents (1965–2023)");
 
         // create checkboxes for the sorting algorithms
         CheckBox northAmericaCheckBox = new CheckBox("North America"); 

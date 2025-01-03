@@ -1,8 +1,6 @@
 package basic;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class CO2DataSearch{
     public static void main(String[] args){

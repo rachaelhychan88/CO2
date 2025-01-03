@@ -1,7 +1,5 @@
 package basic;
 
-import java.io.*;
-
 public class CountryYearCO2 {
     private String country;
     private int year;
