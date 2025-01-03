@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 import javafx.scene.layout.VBox;
 
-public class CO2BarChart extends Application {
+public class CO2BarChartTesting extends Application {
 
     private BarChart<String, Number> co2Chart;
     private CategoryAxis xAxis;
