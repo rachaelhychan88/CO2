@@ -1,6 +1,8 @@
 package basic;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CO2DataSearch{
     public static void main(String[] args){
@@ -42,5 +44,31 @@ public class CO2DataSearch{
         }
 
         return result;
+    }
+
+    public static CountryYearCO2 findCO2fromYear(String country, int year){
+        String path = "C:\\Users\\vetra\\github-classroom\\4-0-data-visualization-rachael-solo\\src\\basic\\CO2Data.csv";
+        String searchWord = country;
+        String searchYear = Integer.toString(year);
+
+        try(BufferedReader br = new BufferedReader(new FileReader(path))){
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] lineData = line.split(",", -1);
+
+                // Check if the line contains the search word
+                if (lineData[0].equals(searchWord) && lineData[1].equals(searchYear)) {
+                    CountryYearCO2 yearResult = new CountryYearCO2(country, year, Double.parseDouble(lineData[15]));
+
+                    return yearResult;
+                }
+            }
+            
+        } catch (FileNotFoundException e) {
+        } catch(IOException e) {
+        }
+
+        return null;
     }
 }

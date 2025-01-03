@@ -2,10 +2,9 @@ package basic;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class CountryYearCO2Collection {
-    private List<CountryYearCO2> countryData;
+    private ArrayList<CountryYearCO2> countryData;
 
     public CountryYearCO2Collection() {
         this.countryData = new ArrayList<>();
@@ -48,9 +47,7 @@ public class CountryYearCO2Collection {
 
     }
 
-    public List<CountryYearCO2> getCountryData() {
+    public ArrayList<CountryYearCO2> getCountryData() {
         return countryData;
     }
-
-    
 }
