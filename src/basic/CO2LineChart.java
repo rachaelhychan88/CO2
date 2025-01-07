@@ -219,6 +219,7 @@ public class CO2LineChart extends Application{
         europeCheckBox.setOnAction(europeEvent);
         australiaCheckBox.setOnAction(australiaEvent);
 
+        // To make the checkboxes horizontal
         HBox checkboxLayout = new HBox(15, northAmericaCheckBox, southAmericaCheckBox, asiaCheckBox, europeCheckBox, africaCheckBox, australiaCheckBox);
         checkboxLayout.setAlignment(Pos.CENTER);
 
