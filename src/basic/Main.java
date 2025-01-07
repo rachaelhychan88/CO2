@@ -13,6 +13,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import java.awt.Desktop;
+import java.net.URI;
 
 /**
  * This class launches a Java FX application that contains the bar chart comparing the CO2 Emissions
@@ -68,13 +70,16 @@ public class Main extends Application{
         Text spacing = new Text("...");
         spacing.setStyle("-fx-fill: white;");
 
+        Text spacing2 = new Text("...");
+        spacing2.setStyle("-fx-fill: white;");
+
         Text title = new Text("Visualizing Global CO₂ Emissions Per Capita");
         title.setFont(Font.font("Impact", 40)); // Specify font name and size
         title.setStyle("-fx-fill: darkgreen;"); // Set text color
 
         Text subtitle = new Text ("- Insights into Our Carbon Footprint -");
         subtitle.setFont(Font.font("Georgia", 30)); // Specify font name and size
-        subtitle.setStyle("-fx-fill: dark grey;"); // Set text color
+        subtitle.setStyle("-fx-fill: black;"); // Set text color
 
         Text explore = new Text ("Explore the Data!");
         explore.setFont(Font.font("impact", 30)); // Specify font name and size
@@ -87,24 +92,24 @@ public class Main extends Application{
         graphDesc.setFont(Font.font("Georgia", 17)); // Specify font name and size
         graphDesc.setStyle("-fx-fill: black;"); // Set text color
 
-        Image CO2Graphic = new Image("Users/vetra/github-classroom/4-0-data-visualization-rachael-solo/src/basic/CO2Graphic.png");
+        Image CO2Graphic = new Image("file:\\C:\\Users\\vetra\\github-classroom\\4-0-data-visualization-rachael-solo\\src\\basic\\CO2Graphic.png");
 
         // Create an ImageView object to display the image
-        //ImageView imageView = new ImageView(CO2Graphic);
+        ImageView imageView = new ImageView(CO2Graphic);
 
         // set the width and height of the image
-        //imageView.setFitWidth(400);  // Set the width
-        //imageView.setFitHeight(350);  // Set the height
+        imageView.setFitWidth(380);  // Set the width
+        imageView.setFitHeight(350);  // Set the height
 
         VBox introTitle = new VBox(10, title, subtitle);
         introTitle.setAlignment(Pos.CENTER);
         VBox graphDescandButtons = new VBox(10, graphDesc, explore, TabWithButton(tabPane));
-        HBox graphDescandImg = new HBox(20, spacing, graphDescandButtons);
-        VBox introLayout = new VBox(20, introTitle, graphDescandImg);
+        HBox graphDescandImg = new HBox(20, spacing, graphDescandButtons, imageView);
+        VBox introLayout = new VBox(15, spacing2, introTitle, graphDescandImg);
         return introLayout;
     }
 
-    public VBox TabWithButton(TabPane tabPane) {
+    public HBox TabWithButton(TabPane tabPane) {
         // Create the button to switch to another tab
         Button lineChart = new Button("Go to Line Chart");
         lineChart.setOnAction(e -> tabPane.getSelectionModel().select(1)); // Switch to the first tab (index 0)
@@ -112,8 +117,20 @@ public class Main extends Application{
         Button barChart = new Button("Go to Bar Chart");
         barChart.setOnAction(e -> tabPane.getSelectionModel().select(2)); // Switch to the second tab (index 1)
 
+        Button dataLink = new Button("Go to Data Set");
+        dataLink.setOnAction(event -> {
+            try {
+                // The URL to open
+                URI uri = new URI("https://github.com/owid/co2-data");
+                Desktop desktop = Desktop.getDesktop();
+                desktop.browse(uri);  // Opens the URL in the default browser
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
         // Arrange the button in a layout
-        VBox layout = new VBox(10, lineChart, barChart);
+        HBox layout = new HBox(10, lineChart, barChart, dataLink);
 
         return layout;
     }
