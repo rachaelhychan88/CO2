@@ -9,6 +9,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import java.io.*;
 import javafx.event.EventHandler; 
@@ -218,7 +219,10 @@ public class CO2LineChart extends Application{
         europeCheckBox.setOnAction(europeEvent);
         australiaCheckBox.setOnAction(australiaEvent);
 
-        VBox layout = new VBox(10, lineChart, northAmericaCheckBox, southAmericaCheckBox, asiaCheckBox, europeCheckBox, africaCheckBox, australiaCheckBox);
+        HBox checkboxLayout = new HBox(15, northAmericaCheckBox, southAmericaCheckBox, asiaCheckBox, europeCheckBox, africaCheckBox, australiaCheckBox);
+        checkboxLayout.setAlignment(Pos.CENTER);
+
+        VBox layout = new VBox(15, lineChart, checkboxLayout);
         layout.setAlignment(Pos.CENTER); // Align elements to center
 
         return layout;

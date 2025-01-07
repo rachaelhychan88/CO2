@@ -44,7 +44,7 @@ public class CountryYearCO2 {
 
     /**
      * Getter method for the CO2 per capita
-     * return the CO2 per capita
+     * @return the CO2 per capita
      */
     public double getCo2PerCapita(){
         return co2PerCapita;
