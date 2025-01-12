@@ -25,6 +25,7 @@ import java.net.URI;
  */
 public class Main extends Application{
 
+    // Declare and initialize variables
     TabPane tabPane = new TabPane();
     
     /**
@@ -66,6 +67,11 @@ public class Main extends Application{
         stage.show();
     }
 
+    /**
+     * Creates a VBox layout containing the intro screen and buttons that lead to the other charts
+     * 
+     * @return a VBox containing the intro screen and buttons
+     */
     public VBox introLayout(){
         Text spacing = new Text("...");
         spacing.setStyle("-fx-fill: white;");
@@ -109,13 +115,19 @@ public class Main extends Application{
         return introLayout;
     }
 
+    /**
+     * Creates a HBox layout for the buttons that allow the user to switch to the charts and data set
+     * 
+     * @param tabPane TabPane that contains all the tabs 
+     * @return A HBox containing the buttons
+     */
     public HBox TabWithButton(TabPane tabPane) {
         // Create the button to switch to another tab
         Button lineChart = new Button("Go to Line Chart");
-        lineChart.setOnAction(e -> tabPane.getSelectionModel().select(1)); // Switch to the first tab (index 0)
+        lineChart.setOnAction(e -> tabPane.getSelectionModel().select(1)); // Switch to the second tab (index 1)
 
         Button barChart = new Button("Go to Bar Chart");
-        barChart.setOnAction(e -> tabPane.getSelectionModel().select(2)); // Switch to the second tab (index 1)
+        barChart.setOnAction(e -> tabPane.getSelectionModel().select(2)); // Switch to the third tab (index 2)
 
         Button dataLink = new Button("Go to Data Set");
         dataLink.setOnAction(event -> {
@@ -125,11 +137,10 @@ public class Main extends Application{
                 Desktop desktop = Desktop.getDesktop();
                 desktop.browse(uri);  // Opens the URL in the default browser
             } catch (Exception e) {
-                e.printStackTrace();
             }
         });
 
-        // Arrange the button in a layout
+        // Arrange the buttons in a horizontal layout
         HBox layout = new HBox(10, lineChart, barChart, dataLink);
 
         return layout;
