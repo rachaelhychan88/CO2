@@ -6,12 +6,10 @@ package basic;
  * 
  * @author: R. Chan
  */
-public class CountryYearCO2 {
+public class CountryYearCO2 extends CO2DataPoint{
 
     // Declare variables
     private String country;
-    private int year;
-    private double co2PerCapita;
 
     /**
      * Constructor - creates a new CountryYearCO2 instance
@@ -21,9 +19,8 @@ public class CountryYearCO2 {
      * @param co2PerCapita - the CO2 per capita for that country in that year
      */
     public CountryYearCO2(String country, int year, double co2PerCapita){
+        super(year, co2PerCapita);
         this.country = country;
-        this.year = year;
-        this.co2PerCapita = co2PerCapita;
     }
 
     /**
@@ -34,19 +31,4 @@ public class CountryYearCO2 {
         return country;
     }
 
-    /**
-     * Getter method for the year
-     * @return the year
-     */
-    public int getYear(){
-        return year;
-    }
-
-    /**
-     * Getter method for the CO2 per capita
-     * @return the CO2 per capita
-     */
-    public double getCo2PerCapita(){
-        return co2PerCapita;
-    }
 }
