@@ -25,6 +25,7 @@ public class CountryYearCO2 extends CO2DataPoint{
 
     /**
      * Getter method for the country
+     * 
      * @return the country
      */
     public String getCountry(){

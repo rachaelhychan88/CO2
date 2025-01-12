@@ -106,7 +106,7 @@ public class CO2LineChart extends Application {
 
         // Create a VBox to hold the chart and checkboxes
         VBox layout = new VBox(15, lineChart, checkboxLayout);
-        layout.setAlignment(Pos.CENTER); // Align elements to the center
+        layout.setAlignment(Pos.CENTER); // Aligns elements to the center
     
         return layout;
     }

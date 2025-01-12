@@ -30,6 +30,7 @@ public class CO2BarChart extends Application {
 
     /**
      * Starts the JavaFX application and sets up the primary stage for the bar chart and ComboBox
+     * 
      * @param stage The primary stage for this JavaFX bar chart
      */
     @Override
@@ -101,6 +102,7 @@ public class CO2BarChart extends Application {
 
     /**
      * This method is used to update the chart with data for a selected year
+     * 
      * @param year The selected year
      */
     public void updateChart(int year){

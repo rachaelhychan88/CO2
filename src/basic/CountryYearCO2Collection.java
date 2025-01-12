@@ -23,9 +23,10 @@ public class CountryYearCO2Collection {
     /**
      * This method makes the CountryYearCO2Collection contain CountryYearCO2 Objects for each 
      * relevant line of the CO2Data.csv file
+     * 
      * @param country the country of interest
      */
-    public void countryDataSearch(String country){
+    public void countryDataSearch(String country) {
 
         // Declare and initialize variables
         int[] countryStartOccurrence = CO2DataSearch.searchYearCo2PerCap(country);
