@@ -74,44 +74,52 @@ public class Main extends Application{
      */
     public VBox introLayout(){
         Text spacing = new Text("...");
-        spacing.setStyle("-fx-fill: white;");
+        spacing.setStyle("-fx-fill: white;"); // Set text colour
 
         Text spacing2 = new Text("...");
-        spacing2.setStyle("-fx-fill: white;");
+        spacing2.setStyle("-fx-fill: white;"); // Set text colour
 
         Text title = new Text("Visualizing Global CO₂ Emissions Per Capita");
         title.setFont(Font.font("Impact", 40)); // Specify font name and size
-        title.setStyle("-fx-fill: darkgreen;"); // Set text color
+        title.setStyle("-fx-fill: darkgreen;"); // Set text colour
 
         Text subtitle = new Text ("- Insights into Our Carbon Footprint -");
         subtitle.setFont(Font.font("Georgia", 30)); // Specify font name and size
-        subtitle.setStyle("-fx-fill: black;"); // Set text color
+        subtitle.setStyle("-fx-fill: black;"); // Set text colour
 
         Text explore = new Text ("Explore the Data!");
         explore.setFont(Font.font("impact", 30)); // Specify font name and size
-        explore.setStyle("-fx-fill: darkgreen;"); // Set text color
+        explore.setStyle("-fx-fill: darkgreen;"); // Set text colour
 
         Text graphDesc = new Text();
         graphDesc.setText("These graphs provide an overview of CO₂ emissions per capita around the world, highlighting critical environmental issues. Graphing this data is important as it allows you to observe long-term trends, such as the rise or decline in global emissions or the comparison of CO2 levels in countries. These charts can help identify patterns and potential turning points in emission levels over time, as well as give insight into which countries contribute the most to global CO2 emissions. These graphs aim to encourage discussions about sustainability and the steps needed to address climate change.\r\n" + //
                         "");
         graphDesc.setWrappingWidth(350); // Enable word wrapping
         graphDesc.setFont(Font.font("Georgia", 17)); // Specify font name and size
-        graphDesc.setStyle("-fx-fill: black;"); // Set text color
+        graphDesc.setStyle("-fx-fill: black;"); // Set text colour
 
         Image CO2Graphic = new Image("file:\\C:\\Users\\vetra\\github-classroom\\4-0-data-visualization-rachael-solo\\src\\basic\\CO2Graphic.png");
 
         // Create an ImageView object to display the image
         ImageView imageView = new ImageView(CO2Graphic);
 
-        // set the width and height of the image
-        imageView.setFitWidth(380);  // Set the width
-        imageView.setFitHeight(350);  // Set the height
+        // Set the width and height of the image
+        imageView.setFitWidth(380); 
+        imageView.setFitHeight(350); 
 
+        // Create the VBox for the title
         VBox introTitle = new VBox(10, title, subtitle);
         introTitle.setAlignment(Pos.CENTER);
+
+        // Create the VBox for the left bottom side of the window
         VBox graphDescandButtons = new VBox(10, graphDesc, explore, TabWithButton(tabPane));
+
+        // Create the HBox for the bottom parts of the window
         HBox graphDescandImg = new HBox(20, spacing, graphDescandButtons, imageView);
+
+        // Create the VBox combining the VBox and HBox together to form the layout
         VBox introLayout = new VBox(15, spacing2, introTitle, graphDescandImg);
+
         return introLayout;
     }
 

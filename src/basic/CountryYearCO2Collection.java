@@ -65,7 +65,6 @@ public class CountryYearCO2Collection {
             System.out.println("Error reading the file: " + e.getMessage());
         }
 
-
     }
 
     /**
