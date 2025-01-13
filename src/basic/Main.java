@@ -130,7 +130,8 @@ public class Main extends Application{
      * @return A HBox containing the buttons
      */
     public HBox TabWithButton(TabPane tabPane) {
-        // Create the button to switch to another tab
+
+        // Create the buttons to switch to another tab
         Button lineChart = new Button("Go to Line Chart");
         lineChart.setOnAction(e -> tabPane.getSelectionModel().select(1)); // Switch to the second tab (index 1)
 
@@ -139,11 +140,12 @@ public class Main extends Application{
 
         Button dataLink = new Button("Go to Data Set");
         dataLink.setOnAction(event -> {
-            try {
-                // The URL to open
-                URI uri = new URI("https://github.com/owid/co2-data");
+            try { 
+                
+                URI uri = new URI("https://github.com/owid/co2-data"); // The URL to open
                 Desktop desktop = Desktop.getDesktop();
                 desktop.browse(uri);  // Opens the URL in the default browser
+
             } catch (Exception e) {
             }
         });

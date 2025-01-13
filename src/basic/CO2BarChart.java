@@ -23,10 +23,11 @@ import javafx.scene.layout.VBox;
  */
 public class CO2BarChart extends Application {
 
-    // Declare variables
+    // Declare and initialize variables
     private BarChart<String, Number> co2Chart;
     private CategoryAxis xAxis;
     private NumberAxis yAxis;
+    String[] countries = {"India", "China", "United States", "Indonesia", "Pakistan", "Nigeria", "Brazil", "Bangladesh", "Russia", "Mexico"};
 
     /**
      * Starts the JavaFX application and sets up the primary stage for the bar chart and ComboBox
@@ -84,8 +85,6 @@ public class CO2BarChart extends Application {
      * This method creates and configures the chart
      */
     public void createContent(){
-        // Define the countries to be displayed on the x-axis
-        String[] countries = {"India", "China", "United States", "Indonesia", "Pakistan", "Nigeria", "Brazil", "Bangladesh", "Russia", "Mexico"};
         
         // Configure the x-axis with country names
         xAxis = new CategoryAxis();
@@ -106,9 +105,6 @@ public class CO2BarChart extends Application {
      * @param year The selected year
      */
     public void updateChart(int year){
-
-        // List of countries to display on the chart
-        String[] countries = {"India", "China", "United States", "Indonesia", "Pakistan", "Nigeria", "Brazil", "Bangladesh", "Russia", "Mexico"};
 
         // Clear existing data from the chart
         co2Chart.getData().clear();
