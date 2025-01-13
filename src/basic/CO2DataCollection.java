@@ -1,6 +1,5 @@
 package basic;
 
-import java.io.*;
 import java.util.ArrayList;
 import javafx.scene.chart.XYChart;
 
@@ -33,48 +32,10 @@ public class CO2DataCollection {
      */
     public ArrayList<CO2DataPoint> countryDataSearch() {
         if (!isDataLoaded) { // Check if the data is already loaded
-            loadData();
+            countryData = CO2DataSearch.loadData(countryName);
             isDataLoaded = true; // Mark data as loaded
         }
         return countryData;
-    }
-
-    /**
-     * This method loads the data from the CO2Data.csv file and populates the countryData array list
-     */
-    private void loadData() {
-        int[] countryStartOccurrence = CO2DataSearch.searchYearCo2PerCap(countryName);
-        String path = "C:\\Users\\vetra\\github-classroom\\4-0-data-visualization-rachael-solo\\src\\basic\\CO2Data.csv";
-        int countryLineCounter = 0;
-        String line;
-        double co2PerCapita;
-        String[] lineData;
-        String strCo2Value;
-
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-            for (int index = 1; index < countryStartOccurrence[0]; index++) {
-                br.readLine(); // Skip lines until the start of the country's data
-            }
-
-            // Read the file line by line until it is no longer the country
-            while ((line = br.readLine()) != null && countryLineCounter < countryStartOccurrence[1]) {
-                lineData = line.split(",", -1); // Splits the line by the comma, making sure to count the empty spaces as elements
-                strCo2Value = lineData[15];
-
-                if (!strCo2Value.isEmpty()) {
-                    co2PerCapita = Double.parseDouble(strCo2Value); // Parse the string to a double
-                    CO2DataPoint currLineYearCO2 = new CO2DataPoint(Integer.parseInt(lineData[1]), co2PerCapita);
-                    countryData.add(currLineYearCO2);
-                }
-
-                countryLineCounter++;
-            }
-
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found: " + e.getMessage());
-        } catch (IOException e) {
-            System.out.println("Error reading the file: " + e.getMessage());
-        }
     }
 
     /**

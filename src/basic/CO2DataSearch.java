@@ -1,6 +1,7 @@
 package basic;
 
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * The CO2Data Search class contains the methods used to search the CO2Data.csv file
@@ -9,6 +10,8 @@ import java.io.*;
  * @author: R. Chan
  */
 public class CO2DataSearch {
+
+    static String path = "C:\\Users\\vetra\\github-classroom\\4-0-data-visualization-rachael-solo\\src\\basic\\CO2Data.csv";
 
     /**
      * This method searches the CO2Data.csv file for the first relevant line that contain the data of a specific country 
@@ -21,7 +24,6 @@ public class CO2DataSearch {
     public static int[] searchYearCo2PerCap(String country){
         
         // Declare and initialize variables
-        String path = "C:\\Users\\vetra\\github-classroom\\4-0-data-visualization-rachael-solo\\src\\basic\\CO2Data.csv";
         String searchWord = country;
         int[] searchResult = new int[2];
         String line;
@@ -67,7 +69,6 @@ public class CO2DataSearch {
     public static CountryYearCO2 findCO2fromYear(String country, int year){
 
         // Declare and initialize variables
-        String path = "C:\\Users\\vetra\\github-classroom\\4-0-data-visualization-rachael-solo\\src\\basic\\CO2Data.csv";
         String searchWord = country;
         String searchYear = Integer.toString(year);
         String line;
@@ -89,4 +90,45 @@ public class CO2DataSearch {
 
         return null;
     }
+
+    /**
+     * This method loads the data from the CO2Data.csv file and populates the countryData array list with CO2DataPoint objects
+     */
+    public static ArrayList<CO2DataPoint> loadData(String countryName) {
+        int[] countryStartOccurrence = CO2DataSearch.searchYearCo2PerCap(countryName);
+        int countryLineCounter = 0;
+        String line;
+        double co2PerCapita;
+        String[] lineData;
+        String strCo2Value;
+        ArrayList<CO2DataPoint> countryData = new ArrayList<CO2DataPoint>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            for (int index = 1; index < countryStartOccurrence[0]; index++) {
+                br.readLine(); // Skip lines until the start of the country's data
+            }
+
+            // Read the file line by line until it is no longer the country
+            while ((line = br.readLine()) != null && countryLineCounter < countryStartOccurrence[1]) {
+                lineData = line.split(",", -1); // Splits the line by the comma, making sure to count the empty spaces as elements
+                strCo2Value = lineData[15];
+
+                if (!strCo2Value.isEmpty()) {
+                    co2PerCapita = Double.parseDouble(strCo2Value); // Parse the string to a double
+                    CO2DataPoint currLineYearCO2 = new CO2DataPoint(Integer.parseInt(lineData[1]), co2PerCapita);
+                    countryData.add(currLineYearCO2);
+                }
+
+                countryLineCounter++;
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Error reading the file: " + e.getMessage());
+        }
+
+        return countryData;
+    }
+
 }
