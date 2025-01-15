@@ -9,5 +9,7 @@ This dataset was selected because it provides a comprehensive view of CO₂ emis
 
 ### Link to Demo Video ###
 
-### UML Class Diagram ###
-TBD
+### UML Class Diagram and Object Oriented Approach ###
+![alt text](<basic/CPTUMLDiagram.drawio (1).png>)
+
+This application utilizes an object-oriented approach, demonstrating the design principle of separation of concerns by assigning each class a single, well-defined responsibility. For example, the CO2DataPoint class is dedicated solely to storing data points, such as the year and CO₂ per capita, while the CountryYearCO2 class extends it to include country-specific information. To manage collections of data, the CO2DataCollection class aggregates multiple CO2DataPoint objects, organizing them by country. Creating charts is handled by the CO2LineChart and CO2BarChart classes, which transform these data points into their respective chart formats for display. Data retrieval is managed by the CO2DataSearch class, which focuses on searching and processing data from the CSV file. Encapsulation is applied with all fields, as year and co2PerCapita are kept private and accessible only through controlled methods like getYear or getCo2PerCapita. This prevents direct modification of variables from other classes. Together, the use of these principles ensure the application is organized and demonstrates an object-oriented approach. 
