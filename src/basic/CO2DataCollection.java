@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import javafx.scene.chart.XYChart;
 
 /**
- * This class contains methods that extract and organize the data from the CO2Data.csv file containing CO2 emissions for a specific country
- * into an array list of CO2DataPoint objects. 
+ * This class is designed to store CO2 emissions for a specific country
+ * through an array list of CO2DataPoint objects.
  * 
  * @author: R. Chan
  */

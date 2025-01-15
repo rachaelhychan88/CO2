@@ -17,8 +17,8 @@ import java.awt.Desktop;
 import java.net.URI;
 
 /**
- * This class launches a Java FX application that contains the bar chart comparing the CO2 Emissions
- * Per Capita for the Top 10 Most Populated Countries in the World and the line chart comparing the Per Capita 
+ * This class launches a Java FX application that contains an intro screen, the bar chart comparing the CO2 Emissions
+ * Per Capita for the Top 10 Most Populated Countries in the World, and the line chart comparing the Per Capita 
  * CO2 Emissions Across Continents from 1965 to 2023 on separate clickable tabs
  * 
  * @author: R. Chan
@@ -36,7 +36,7 @@ public class Main extends Application{
     @Override
     public void start(Stage stage) {
 
-        // Create CO2 Bar Chart Tab
+        // Create Intro Tab
         VBox introLayout = introLayout();
         Tab introTab = new Tab("Intro");
         introTab.setClosable(false);
