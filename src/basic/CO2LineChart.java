@@ -1,19 +1,15 @@
 package basic;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 import java.util.HashMap;
 import java.util.Map;
-import java.io.*;
 import javafx.event.EventHandler; 
 
 /**
@@ -22,30 +18,9 @@ import javafx.event.EventHandler;
  * 
  * @author: R. Chan 
  */
-public class CO2LineChart extends Application {
+public class CO2LineChart {
 
-    /**
-     * Starts the JavaFX application and sets up the primary stage for the line chart and checkboxes
-     * 
-     * @param primaryStage The primary stage for this JavaFX line chart
-     * @throws FileNotFoundException If required data files are not found during the application setup
-     */
-    @Override
-    public void start(Stage primaryStage) throws FileNotFoundException {
-        VBox layout = createChartWithLayout(); 
-
-        // Creates a scene to hold the line chart and checkboxes
-        Scene scene = new Scene(layout, 600, 600);
-
-        // Attaches the Scene to the Stage
-        primaryStage.setScene(scene);
-
-        // Sets the title of the Stage
-        primaryStage.setTitle("Per Capita CO2 Emissions Across Continents (1965–2023)");
-
-        // Makes the Stage (window) visible
-        primaryStage.show();
-    }
+    private String[] continents = {"North America", "South America", "Australia", "Europe", "Africa", "Asia", "World"};
 
     /**
      * Creates a VBox layout containing a line chart (Per Capita CO2 Emissions Across Continents (1965–2023)) 
@@ -54,8 +29,6 @@ public class CO2LineChart extends Application {
      * @return A VBox containing the line chart and associated checkboxes
      */
     public VBox createChartWithLayout() {
-
-        String[] continents = {"North America", "South America", "Australia", "Europe", "Africa", "Asia", "World"};
       
         // Creates a NumberAxis for the x-axis (year)
         NumberAxis xAxis = new NumberAxis("Year", 1965, 2023, 5);
@@ -109,12 +82,5 @@ public class CO2LineChart extends Application {
         layout.setAlignment(Pos.CENTER); // Aligns elements to the center
     
         return layout;
-    }
-    
-    /**
-     * Java main for when running without JavaFX launcher
-     */
-    public static void main(String[] args) {
-        launch(args);
     }
 }

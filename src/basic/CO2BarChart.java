@@ -1,16 +1,13 @@
 package basic;
 
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
-import javafx.stage.Stage;
 import java.util.ArrayList;
 import javafx.scene.layout.VBox;
 
@@ -21,36 +18,13 @@ import javafx.scene.layout.VBox;
  * 
  * @author: R. Chan 
  */
-public class CO2BarChart extends Application {
+public class CO2BarChart {
 
     // Declare and initialize variables
     private BarChart<String, Number> co2Chart;
     private CategoryAxis xAxis;
     private NumberAxis yAxis;
-    String[] countries = {"India", "China", "United States", "Indonesia", "Pakistan", "Nigeria", "Brazil", "Bangladesh", "Russia", "Mexico"};
-
-    /**
-     * Starts the JavaFX application and sets up the primary stage for the bar chart and ComboBox
-     * 
-     * @param stage The primary stage for this JavaFX bar chart
-     */
-    @Override
-    public void start(Stage stage) {
-
-        VBox layout = createChartWithLayout();
-
-        // Creates a scene to hold the bar chart and ComboCox
-        Scene scene = new Scene(layout);
-
-        // Attaches the Scene to the Stage
-        stage.setScene(scene);
-
-        // Sets the title of the stage
-        stage.setTitle("CO2 Emissions Bar Chart");
-
-        // Makes the Stage (window) visible
-        stage.show();
-    }
+    private String[] countries = {"India", "China", "United States", "Indonesia", "Pakistan", "Nigeria", "Brazil", "Bangladesh", "Russia", "Mexico"};
 
     /**
      * Creates a VBox layout containing a bar chart (CO2 Emissions Per Capita for the Top 10 Most Populated Countries in the World) 
@@ -114,7 +88,7 @@ public class CO2BarChart extends Application {
 
         // Find the CO2 data for each country for the selected year
         for (String country : countries) {
-            dataForYear.add(CO2DataSearch.findCO2fromYear(country, year));
+            dataForYear.add(CO2DataSearch.findCo2FromYear(country, year));
         }
 
         // Create a new data series for the specified year
@@ -128,13 +102,6 @@ public class CO2BarChart extends Application {
 
         // Add the data series to the chart
         co2Chart.getData().add(series);
-    }
-
-    /**
-     * Java main for when running without JavaFX launcher
-     */
-    public static void main(String[] args) {
-        launch(args);
     }
 }
 

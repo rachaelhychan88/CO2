@@ -26,7 +26,7 @@ import java.net.URI;
 public class Main extends Application{
 
     // Declare and initialize variables
-    TabPane tabPane = new TabPane();
+    private TabPane tabPane = new TabPane();
     
     /**
      * Sets up the primary stage with a TabPane containing tabs for the bar chart and a line chart

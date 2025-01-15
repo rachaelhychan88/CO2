@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class CO2DataSearch {
 
-    static String path = "C:\\Users\\vetra\\github-classroom\\4-0-data-visualization-rachael-solo\\src\\basic\\CO2Data.csv";
+    private static String path = "C:\\Users\\vetra\\github-classroom\\4-0-data-visualization-rachael-solo\\src\\basic\\CO2Data.csv";
 
     /**
      * This method searches the CO2Data.csv file for the first relevant line that contain the data of a specific country 
@@ -66,7 +66,7 @@ public class CO2DataSearch {
      * @param year the year to search the data for
      * @return a CountryYearCO2 object with the country, year, and the CO2 Emissions per Capita of that country for that year
      */
-    public static CountryYearCO2 findCO2fromYear(String country, int year){
+    public static CountryYearCO2 findCo2FromYear(String country, int year){
 
         // Declare and initialize variables
         String searchWord = country;
