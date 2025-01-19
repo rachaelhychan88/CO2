@@ -25,7 +25,7 @@ import java.net.URI;
  */
 public class Main extends Application{
 
-    // Declare and initialize variables
+    // Declare and initialize variable
     private TabPane tabPane = new TabPane();
     
     /**
@@ -73,34 +73,38 @@ public class Main extends Application{
      * @return a VBox containing the intro screen and buttons
      */
     public VBox introLayout(){
+
+        // Create spacing to separate Text better
         Text spacing = new Text("...");
-        spacing.setStyle("-fx-fill: white;"); // Set text colour
-
+        spacing.setStyle("-fx-fill: white;"); 
         Text spacing2 = new Text("...");
-        spacing2.setStyle("-fx-fill: white;"); // Set text colour
+        spacing2.setStyle("-fx-fill: white;"); 
 
+        // Create Title
         Text title = new Text("Visualizing Global CO₂ Emissions Per Capita");
-        title.setFont(Font.font("Impact", 40)); // Specify font name and size
-        title.setStyle("-fx-fill: darkgreen;"); // Set text colour
+        title.setFont(Font.font("Impact", 40)); 
+        title.setStyle("-fx-fill: darkgreen;"); 
 
+        // Create Subtitle
         Text subtitle = new Text ("- Insights into Our Carbon Footprint -");
         subtitle.setFont(Font.font("Georgia", 30)); // Specify font name and size
         subtitle.setStyle("-fx-fill: black;"); // Set text colour
 
+        // Create Button title
         Text explore = new Text ("Explore the Data!");
         explore.setFont(Font.font("impact", 30)); // Specify font name and size
         explore.setStyle("-fx-fill: darkgreen;"); // Set text colour
 
+        // Create Graph Description
         Text graphDesc = new Text();
         graphDesc.setText("These graphs provide an overview of CO₂ emissions per capita around the world, highlighting critical environmental issues. Graphing this data is important as it allows you to observe long-term trends, such as the rise or decline in global emissions or the comparison of CO2 levels in countries. These charts can help identify patterns and potential turning points in emission levels over time, as well as give insight into which countries contribute the most to global CO2 emissions. These graphs aim to encourage discussions about sustainability and the steps needed to address climate change.\r\n" + //
                         "");
-        graphDesc.setWrappingWidth(350); // Enable word wrapping
-        graphDesc.setFont(Font.font("Georgia", 17)); // Specify font name and size
-        graphDesc.setStyle("-fx-fill: black;"); // Set text colour
+        graphDesc.setWrappingWidth(350); 
+        graphDesc.setFont(Font.font("Georgia", 17));
+        graphDesc.setStyle("-fx-fill: black;"); 
 
+        // Display the image
         Image CO2Graphic = new Image("file:\\C:\\Users\\vetra\\github-classroom\\4-0-data-visualization-rachael-solo\\src\\basic\\CO2Graphic.png");
-
-        // Create an ImageView object to display the image
         ImageView imageView = new ImageView(CO2Graphic);
 
         // Set the width and height of the image

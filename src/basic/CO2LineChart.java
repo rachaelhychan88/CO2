@@ -20,7 +20,7 @@ import javafx.event.EventHandler;
  */
 public class CO2LineChart {
 
-    private String[] continents = {"North America", "South America", "Australia", "Europe", "Africa", "Asia", "World"};
+    private String[] continents = {"North America", "South America", "Australia", "Europe", "Africa", "Asia", "World"}; // Array containing the continents that will be graphed
 
     /**
      * Creates a VBox layout containing a line chart (Per Capita CO2 Emissions Across Continents (1965–2023)) 

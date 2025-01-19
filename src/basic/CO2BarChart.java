@@ -24,7 +24,7 @@ public class CO2BarChart {
     private BarChart<String, Number> co2Chart;
     private CategoryAxis xAxis;
     private NumberAxis yAxis;
-    private String[] countries = {"India", "China", "United States", "Indonesia", "Pakistan", "Nigeria", "Brazil", "Bangladesh", "Russia", "Mexico"};
+    private String[] countries = {"India", "China", "United States", "Indonesia", "Pakistan", "Nigeria", "Brazil", "Bangladesh", "Russia", "Mexico"}; // Array containing countries to be graphed
 
     /**
      * Creates a VBox layout containing a bar chart (CO2 Emissions Per Capita for the Top 10 Most Populated Countries in the World) 

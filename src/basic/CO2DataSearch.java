@@ -95,6 +95,8 @@ public class CO2DataSearch {
      * This method loads the data from the CO2Data.csv file and populates the countryData array list with CO2DataPoint objects
      */
     public static ArrayList<CO2DataPoint> loadData(String countryName) {
+        
+        // Declare and initialize variables
         int[] countryStartOccurrence = CO2DataSearch.searchYearCo2PerCap(countryName);
         int countryLineCounter = 0;
         String line;
@@ -123,9 +125,7 @@ public class CO2DataSearch {
             }
 
         } catch (FileNotFoundException e) {
-            System.out.println("File not found: " + e.getMessage());
         } catch (IOException e) {
-            System.out.println("Error reading the file: " + e.getMessage());
         }
 
         return countryData;

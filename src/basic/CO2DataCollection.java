@@ -53,7 +53,10 @@ public class CO2DataCollection {
      * @return the country's line chart
      */
     public XYChart.Series<Number, Number> getChart() {
+
+        // Declare and initialize variable
         XYChart.Series<Number, Number> countryChart = new XYChart.Series<>();
+
         for (CO2DataPoint data : countryDataSearch()) {
             countryChart.getData().add(new XYChart.Data<>(data.getYear(), data.getCo2PerCapita())); // Add data points to the chart
         }
